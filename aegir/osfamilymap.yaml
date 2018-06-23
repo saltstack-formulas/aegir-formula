@@ -1,0 +1,9 @@
+Debian:
+  use_upstream_repo: true
+  repo:
+    humanname: Aegir Hosting System repository
+    url_base: http://debian.aegirproject.org
+    version: stable
+    file: /etc/apt/sources.list.d/aegir-stable.list
+    key_url: http://debian.aegirproject.org/key.asc
+

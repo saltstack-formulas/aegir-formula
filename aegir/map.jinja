@@ -1,0 +1,12 @@
+{% import_yaml "aegir/defaults.yaml" as defaults %}
+{% import_yaml "aegir/osfamilymap.yaml" as osfamilymap %}
+
+{% set aegir = salt['grains.filter_by'](
+   defaults,
+   merge=salt['grains.filter_by'](
+         osfamilymap,
+         grain='os_family',
+         merge=salt['pillar.get']('aegir', {}),
+   ),
+   base='aegir',
+) %}

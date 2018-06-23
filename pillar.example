@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+aegir:
+  use_upstream_repo: true
+
+  pkg: aegir3
+  user: aegir
+  group: aegir
+  homedir: /var/aegir
+
+  hostmaster:
+    site: localhost
+    db_host: localhost
+    db_user: aegir
+    db_password: YouBetterChangeThis
+    email: root
+    # One of apache2, nginx
+    webserver: apache2
+

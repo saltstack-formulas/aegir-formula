@@ -1,0 +1,69 @@
+---
+driver:
+  name: docker
+
+driver_config:
+  use_sudo: false
+  privileged: true
+  provision_command:
+    - mkdir -p /run/sshd
+    - apt-get update && apt-get install -y locales apt-utils && locale-gen en_US.UTF-8
+  run_command: /lib/systemd/systemd
+
+platforms:
+  - name: debian-9
+
+provisioner:
+  name: salt_solo
+  log_level: info
+  require_chef: false
+  salt_version: latest
+  formula: aegir
+  salt_copy_filter:
+    - .kitchen
+    - .git
+  dependencies:
+    - name: php
+      repo: git
+      source: https://github.com/saltstack-formulas/php-formula.git
+    - name: postfix
+      repo: git
+      source: https://github.com/saltstack-formulas/postfix-formula.git
+    - name: apache
+      repo: git
+      source: https://github.com/saltstack-formulas/apache-formula.git
+    - name: mysql
+      repo: git
+      source: https://github.com/saltstack-formulas/mysql-formula.git
+
+  pillars_from_files:
+    aegir.sls: pillar.example
+    php.sls: examples/pillar.php
+    mysql.sls: examples/pillar.mysql
+
+  pillars:
+    top.sls:
+      base:
+        '*':
+          - aegir
+          - php
+          - mysql
+
+verifier:
+  name: inspec
+  sudo: true
+  reporter: cli
+  inspec_tests:
+    - path: test/integration/default
+
+suites:
+  - name: aegir
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - postfix
+            - php.ng
+            - apache
+            - mysql
+            - aegir

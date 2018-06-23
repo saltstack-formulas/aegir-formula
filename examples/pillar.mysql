@@ -1,0 +1,9 @@
+### MYSQL/MARIADB/PERCONA
+mysql:
+  user:
+    aegir:
+      password: 'YouBetterChangeThis'
+      databases:
+        - database: '*'
+          grants: ['all privileges']
+
