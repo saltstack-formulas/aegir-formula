@@ -5,8 +5,10 @@ aegir:
 
   pkg: aegir3
   user: aegir
+  webserver_group: www-data
   shell: /bin/false
   homedir: /var/aegir
+  homedir_mode: 755
 
   hostmaster:
     site: localhost

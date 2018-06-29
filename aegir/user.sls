@@ -7,4 +7,6 @@ aegir_user:
     - system: true
     - shell: {{ aegir.shell }}
     - home: {{ aegir.homedir }}
-
+    - user_dir_mode: {{ aegir.homedir_mode }}
+    - groups: 
+        - {{ aegir.webserver_group }}
