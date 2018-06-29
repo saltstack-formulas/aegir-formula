@@ -3,7 +3,7 @@ control 'AEgir user' do
 
   describe user('aegir') do
     it { should exist }
-    its('group') { should eq 'aegir' }
+    its('groups') { should eq [ 'aegir', 'www-data'] }
     its('home') { should eq '/var/aegir' }
     its('shell') { should eq '/bin/false' }
   end
