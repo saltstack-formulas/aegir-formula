@@ -17,4 +17,5 @@ aegir:
     db_password: YouBetterChangeThis
     email: root
     webserver: apache2
+    modules: {}
 

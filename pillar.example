@@ -16,4 +16,33 @@ aegir:
     email: root
     # One of apache2, nginx
     webserver: apache2
-
+    modules:
+      # General format is:
+      # module_name:
+      #   url: https://url/to/obtain/the/module
+      #   target: /path/to/the/place/where/the/module/will/be/installed
+      #   sites:           # optional list of sites to which the module will be applied
+      #                    # defaults to 'hostmaster'
+      #     - a_site
+      #     - b_site
+      #   install_command: optional_command to install the module. If not specified,
+      #                    drush @<site> pm-enable -y <module_name>
+      #                    will be applied to each site in <sites>. 
+      #   test_command: optional command to test the module is already installed. If not specified,
+      #                    drush @<site> pm-info --fields=status <module_name> | grep "Status   :  enabled"
+      #                    will be used for each site in <sites>.
+      hosting_external:
+        url: https://git.drupal.org/sandbox/mpv/2984207.git
+        branch: 7.x-3.x
+        target: /var/aegir/hostmaster-7.x-3.151/sites/all/modules/hosting_external
+      provision_extra_sync:
+        url: https://git.drupal.org/sandbox/mpv/2985693.git
+        branch: 7.x-3.x
+        target: /var/aegir/.drush/provision_extra_sync
+        install_command: 'drush cc drush --nocolor'
+        test_command: 'ls ~aegir/.drush/provision_extra_sync/README.md'
+      hosting_apache_https: {}
+      hosting_certificate: {}
+      hosting_clone: {}
+      hosting_http_basic_auth: {}
+      hosting_https: {}

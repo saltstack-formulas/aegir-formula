@@ -5,4 +5,5 @@ include:
   - aegir.repo
   - aegir.user
   - aegir.install
+  - aegir.modules
 #  - aegir.config
