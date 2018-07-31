@@ -57,6 +57,11 @@ Installs extra modules for `aegir`.
 
 See ``pillar.example`` file for details.
 
+``aegir.service``
+-----------------
+
+Manage the `aegir3` hostmaster's queue service.
+
 Salt Compatibility
 ==================
 

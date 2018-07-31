@@ -1,6 +1,10 @@
 aegir formula
 =============
 
+0.0.3 (2018-07-31)
+
+- Add service management for hosting-queued
+
 0.0.2 (2018-07-30)
 
 - Allow to add extra modules to AEgir
