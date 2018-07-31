@@ -50,6 +50,13 @@ Creates and configures the `aegir` user and group.
 
 Installs the `aegir3` packages (currently, only Debian's).
 
+``aegir.modules``
+-----------------
+
+Installs extra modules for `aegir`.
+
+See ``pillar.example`` file for details.
+
 Salt Compatibility
 ==================
 
