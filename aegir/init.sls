@@ -6,4 +6,4 @@ include:
   - aegir.user
   - aegir.install
   - aegir.modules
-#  - aegir.config
+  - aegir.service

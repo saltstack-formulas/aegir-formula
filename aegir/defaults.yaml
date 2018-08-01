@@ -16,6 +16,7 @@ aegir:
     db_user: aegir
     db_password: YouBetterChangeThis
     email: root
+    service: hosting-queued
     webserver: apache2
     modules: {}
 
