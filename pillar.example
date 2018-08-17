@@ -46,3 +46,24 @@ aegir:
       hosting_clone: {}
       hosting_http_basic_auth: {}
       hosting_https: {}
+    patches:
+      letsencrypt_context:
+        path: /var/aegir/hostmaster-7.x-3.151/profiles/hostmaster/modules/aegir/hosting_https
+        source: https://www.drupal.org/files/issues/2018-07-31/wrong_letsencrypt_context_properties-2988639-4.patch
+        args: '-p1'
+        verification: test $(sha256sum /var/aegir/hostmaster-7.x-3.151/profiles/hostmaster/modules/aegir/hosting_https/submodules/letsencrypt/drush/Provision/Service/Certificate/LetsEncrypt.php |cut -f 1 -d ' ' ) = '21faeacdc0d84c011d7d77a4730ffd6f48f49a27695de784e98640f81e654e97'
+      letsencrypt_permissions:
+        path: /var/aegir/hostmaster-7.x-3.151/profiles/hostmaster/modules/aegir/hosting_https
+        source: https://www.drupal.org/files/issues/2018-03-24/2952573-hook-permissions_2.patch
+        args: '-p1'
+        verification: test $(sha256sum /var/aegir/hostmaster-7.x-3.151/profiles/hostmaster/modules/aegir/hosting_https/submodules/letsencrypt/drush/Provision/Service/Certificate/LetsEncrypt.php |cut -f 1 -d ' ' ) = '21faeacdc0d84c011d7d77a4730ffd6f48f49a27695de784e98640f81e654e97'
+      provision_drupal_settings_6:
+        path: /usr/share/drush/commands/provision
+        source: https://cgit.drupalcode.org/provision/patch/?id=7bf972c539d1ccbec79e8faa727a123553ad7cd8
+        args: '-p1'
+        verification: test $(sha256sum /usr/share/drush/commands/provision/Provision/Config/Drupal/provision_drupal_settings_6.tpl.php |cut -f 1 -d ' ' ) = '5f6a45bab4d8ec97d113734fb65bd654ad2a177d23f72ecc9f6cb91ab991e9c0'
+      provision_drupal_settings_7:
+        path: /usr/share/drush/commands/provision
+        source: https://cgit.drupalcode.org/provision/patch/?id=9f909617352a98f91358fdda80fb24e12b5a803d
+        args: '-p1'
+        verification: test $(sha256sum /usr/share/drush/commands/provision/Provision/Config/Drupal/provision_drupal_settings_7.tpl.php |cut -f 1 -d ' ' ) = '4c5a0f2c59ba43ac49d60c1872e69824806a9aca61af33620923458a929f7082'
