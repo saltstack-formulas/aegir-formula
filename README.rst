@@ -57,6 +57,13 @@ Installs extra modules for `aegir`.
 
 See ``pillar.example`` file for details.
 
+``aegir.patches``
+-----------------
+
+Applies patches to an existing `aegir` installation.
+
+See ``pillar.example`` file for details on accepted parameters.
+
 ``aegir.service``
 -----------------
 
